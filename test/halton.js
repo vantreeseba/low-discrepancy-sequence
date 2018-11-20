@@ -38,9 +38,9 @@ var tests = {
 
 testCases.forEach(({i, r}) => {
   tests.halton[`In base 2 given index ${i} should output ${r}`] = () => {
-    const gen = new index.halton(2, 3, i);
+    const gen = new index.halton([2, 3], i);
     const result = gen.getNext();
-    assert.equal(result.x, r);
+    assert.equal(result[0], r);
   };
 });
 

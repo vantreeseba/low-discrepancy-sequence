@@ -7,13 +7,14 @@ class haltonSequence {
   /**
    * Constructor
    *
-   * @param {Number} [base1=2] The first base.
-   * @param {Number} [base2=3] The second base.
+   * @param {Array} [bases=[2,3]] A Vector representing the bases of the sequence.
    * @param {Number} [seed=1] The seed to start the sequence index with.
    */
-  constructor(base1 = 2, base2 = 3, seed = 0) {
-    this.gen1 = new vanDerCorput(base1, seed);
-    this.gen2 = new vanDerCorput(base2, seed);
+  constructor(bases = [2, 3], seed = 0) {
+    this.generators = [];
+    for(let i = 0; i < bases.length; i++) {
+      this.generators.push(new vanDerCorput(bases[i], seed));
+    }
   }
 
   /**
@@ -21,10 +22,7 @@ class haltonSequence {
    * @return {Object} The element in form {x,y}.
    */
   getNext() {
-    const x = this.gen1.getNext();
-    const y = this.gen2.getNext();
-
-    return {x, y};
+    return this.generators.map(g => g.getNext());
   }
 }
 
