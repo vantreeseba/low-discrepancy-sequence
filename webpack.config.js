@@ -8,7 +8,7 @@ const config = {
     ],
   },
   output: {
-    library: ['halton-sequence'],
+    library: ['lowDiscrepancySequence'],
     libraryTarget: 'umd',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
