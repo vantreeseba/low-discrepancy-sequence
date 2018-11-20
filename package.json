@@ -1,0 +1,48 @@
+{
+  "name": "low-discrepency-sequence",
+  "version": "0.0.1",
+  "description": "",
+  "author": "vantreeseba@gmail.com",
+  "license": "MIT",
+  "repository": "", 
+  "main": "index.js",
+  "browser": "dist/index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^4.1.0",
+    "husky": "^0.14.3",
+    "mocha": "^5.2.0",
+    "npm-watch": "^0.3.0",
+    "nyc": "^11.2.1",
+    "webpack": "^4.16.3",
+    "webpack-command": "^0.4.1"
+  },
+  "watch": {
+    "test": {
+      "patterns": [
+        "test",
+        "."
+      ],
+      "extensions": "js",
+      "quiet": true
+    }
+  },
+  "nyc": {
+    "exclude": [
+      "docs",
+      "test",
+      "dist",
+      "webpack.config.js"
+    ]
+  },
+  "scripts": {
+    "watch": "npm-watch test",
+    "test": "nyc -r text --all mocha -u exports",
+    "build-dist": "webpack",
+    "build-readme": "jsdoc2md -t README.hbs -f *.js > README.md",
+    "build-changelog": "conventional-changelog -i CHANGELOG.md -s -r 0",
+    "precommit": "npm run test",
+    "version": "npm run build-readme && git add README.md && npm run build-changelog && git add CHANGELOG.md",
+    "postversion": "git push && git push --tags"
+  }
+}
