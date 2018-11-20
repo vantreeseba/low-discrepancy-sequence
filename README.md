@@ -19,19 +19,18 @@ A 2D halton sequence generator.
 **Kind**: global class  
 
 * [haltonSequence](#haltonSequence)
-    * [new haltonSequence([base1], [base2], [seed])](#new_haltonSequence_new)
+    * [new haltonSequence([bases], [seed])](#new_haltonSequence_new)
     * [.getNext()](#haltonSequence+getNext) ⇒ <code>Object</code>
 
 <a name="new_haltonSequence_new"></a>
 
-### new haltonSequence([base1], [base2], [seed])
+### new haltonSequence([bases], [seed])
 Constructor
 
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [base1] | <code>Number</code> | <code>2</code> | The first base. |
-| [base2] | <code>Number</code> | <code>3</code> | The second base. |
+| [bases] | <code>Array</code> | <code>[2,3]</code> | A Vector representing the bases of the sequence. |
 | [seed] | <code>Number</code> | <code>1</code> | The seed to start the sequence index with. |
 
 <a name="haltonSequence+getNext"></a>
